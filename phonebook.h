@@ -6,7 +6,8 @@
 
 #define CHUNK 256
 
-struct contact {
+// ADT
+struct contact {                // Contatto con puntatore a prossima struttura
     char *name;
     char *surname;
     char *number;
@@ -15,9 +16,20 @@ struct contact {
 
 typedef struct contact Contact;
 
-void add_contact(void **, void *);
-int remove_contact(void **, char *);
-void print_phonebook(void *);
-char *to_string(void *);
+// ------------------ Prototipi
+void add_contact(void **, void *);      // Nuovo contatto aggiunto alla lista
+int remove_contact(void **, char *);    // Rimozione nuovo contatto
+void print_phonebook(void *);           // Stampa lista
+char *to_string(void *);                // Concatenzazione dei campi della struttura (sorta di toString di Java)
+// Getter e setter dei campi della struttura. Livello basso di incapsulamento perché le restanti funzioni possono comunque
+// accedere direttamente ai dati.
+char *get_name(void *);
+char *get_surname(void *);
+char *get_number(void *);
+Contact *get_next(void *);
+void *set_name(void *, char *);
+void *set_surname(void *, char *);
+void *set_number(void *, char *);
+void *set_next(void *, Contact *);
 
 #endif //PHONEBOOK_PHONEBOOK_H
